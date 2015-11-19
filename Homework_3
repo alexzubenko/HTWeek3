@@ -13,17 +13,17 @@ java.io.*;
     !!! always close OutputStream and Writer
 
 3. Implement class FileHelper               window analog
-       - show all available commands        help
-       - changeCurrentLocation              cd
-       - find file(dir)                     find
-       - show directoryContent              dir
-       - show file (content)                type
-       - delete file or dir                 del , rd
-       - create dir                         mkdir
-       - create file                        ? )))
-       - show folder structure              tree
-       - copy file                          copy
-       - compare content of files           fc
+    +  - show all available commands        help
+    +  - changeCurrentLocation              cd
+    !!  - find file(dir)                     find
+    +  - show directoryContent              dir
+    +  - show file (content)                type
+    +  - delete file or dir                 del , rd
+    +  - create dir                         mkdir
+    +  - create file                        ? )))
+    +  - show folder structure              tree
+    !! - copy file                          copy
+    !! - compare content of files           fc
 
        * implement commands redirection
        http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/redirection.mspx?mfr=true

@@ -1,10 +1,11 @@
 package Alex.FileHelper;
 
-import java.io.File;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
+import java.nio.file.StandardCopyOption.*;
 
 /**
  * Created by alex on 16.11.15.
@@ -14,8 +15,10 @@ public class FileHelper {
 
 
     //static String startPath = new File("").getAbsolutePath();
-    static String startPath = "/home/alex/test";
-    private String currentPath = startPath;
+
+    private File startPath = new File("/home/alex/java");
+
+
     private Map<String,String> helpMap;
 
 
@@ -23,14 +26,9 @@ public class FileHelper {
         initialisation();
     }
 
-    public String getCurrentPath() {
-        return currentPath;
+    public File getStartPath() {
+        return startPath;
     }
-
-    public void setCurrentPath(String currentPath) {
-        this.currentPath = currentPath;
-    }
-
 
     public void initialisation(){
 
@@ -50,13 +48,12 @@ public class FileHelper {
 
     }
 
-    public void changeCurrentLocation (String destination){
+    public void changeCurrentLocation (File newPath){
 
-        setCurrentPath(getCurrentPath()+destination);
+        startPath = newPath;
 
 
     }
-
 
     public void ShowAllCommands (){
 
@@ -67,15 +64,89 @@ public class FileHelper {
 
     }
 
-    public void createDirectory(String directoryName){
-        File file = new File(currentPath+"/"+directoryName);
-        file.mkdir();
-        System.out.println("Directory " + file.getAbsolutePath() + " created");
+
+
+    public void createDirectory(File directoryName){
+        directoryName.mkdir();
+        System.out.println("Directory " + startPath + "/"+ directoryName.getName() + " has been created");
     }
 
 
 
 
+    public void showFileContent(File fileName) throws FileNotFoundException {
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        String line = null;
+        try {
+            while ((line = br.readLine())!=null){
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void showDirectoryContent(File directory){
+        File [] list = directory.listFiles();
+        for (File file:list){
+        System.out.println(file);}
+    }
+
+    public void createFile(File filename){
+        try {
+            filename.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void deleteFileDir(File nameToDelete){
+        nameToDelete.delete();
+    }
+
+
+
+
+
+    public void showFolderTree( File path ) {
+
+
+        File[] list = path.listFiles();
+
+        if (list == null) return;
+
+        for (File f : list) {
+            if (f.isDirectory()) {
+                showFolderTree(new File(f.getAbsolutePath()));
+                System.out.println("Dir:" + f.getAbsoluteFile());
+            } else {
+                System.out.println("File:" + f.getAbsoluteFile());
+            }
+        }
+    }
+
+
+    /*public void findFile(File filename){
+
+        File[] list = startPath.listFiles();
+
+        if (list == null) return;
+
+        for (File f:list){
+            if (f.isDirectory()){
+                findFile(new File(f.getAbsolutePath()));
+            } else {
+                if (f.equals(filename)){
+                    System.out.println(f.getAbsolutePath());
+                }
+                else{System.out.println("Not that guy");}
+
+            }
+        }
+
+    }*/
 
 
 
