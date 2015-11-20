@@ -16,7 +16,8 @@ public class FileHelper {
 
     //static String startPath = new File("").getAbsolutePath();
 
-    private File startPath = new File("/home/alex/java");
+    private File startPath = new File("/home/alex/java/HTWeek3");
+    private Utils utils;
 
 
     private Map<String,String> helpMap;
@@ -24,6 +25,7 @@ public class FileHelper {
 
     public FileHelper() {
         initialisation();
+        utils = new Utils();
     }
 
     public File getStartPath() {
@@ -73,8 +75,8 @@ public class FileHelper {
 
 
 
-
-    public void showFileContent(File fileName) throws FileNotFoundException {
+    //Another useful variant of showFileContent
+    /*public void showFileContent(File fileName) throws FileNotFoundException {
         BufferedReader br = new BufferedReader(new FileReader(fileName));
         String line = null;
         try {
@@ -85,7 +87,16 @@ public class FileHelper {
             e.printStackTrace();
         }
 
+    }*/
+
+
+
+    public void showFileContent(File file){
+        String output = (String)utils.load(file.getPath());
+        System.out.println(output);
+
     }
+
 
     public void showDirectoryContent(File directory){
         File [] list = directory.listFiles();
@@ -147,6 +158,29 @@ public class FileHelper {
         }
 
     }*/
+
+//Doesnot work
+    public String findFileOrDirectory(final File fileOfDir){
+
+        File[] matchingFiles = startPath.listFiles(new FilenameFilter() {
+            public boolean accept(File dir, String name) {
+                return name.startsWith(fileOfDir.toString());
+            }
+        });
+        return null;
+    }
+
+
+    //To-do
+    public void copyFile(File fileName){
+
+    }
+
+
+    //To-do
+    public boolean compareContentOfFiles(File file1,File file2){
+        return true;
+    }
 
 
 

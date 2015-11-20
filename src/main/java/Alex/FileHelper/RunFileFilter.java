@@ -11,12 +11,12 @@ public class RunFileFilter {
     public static void main (String[] args) throws FileNotFoundException {
 
         FileHelper fl = new FileHelper();
-        File file = new File("/home/alex/java/HTWeek3/pom.xml");
+        File file = new File("/home/alex/test/sample.txt");
 
-        fl.ShowAllCommands();
+        //fl.ShowAllCommands();
        //fl.createDirectory(file);
 
-        //fl.showFileContent(file);
+        fl.showFileContent(file);
 
 
 
@@ -28,6 +28,8 @@ public class RunFileFilter {
         //fl.showFolderTree(file);
 
         //fl.findFile(file);
+
+        //System.out.println(fl.findFileOrDirectory(file));
 
 
 
