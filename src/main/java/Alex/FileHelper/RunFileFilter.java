@@ -13,7 +13,7 @@ public class RunFileFilter {
         FileHelper fl = new FileHelper();
         File file = new File("/home/alex/java/HTWeek3/pom.xml");
 
-        //fl.ShowAllCommands();
+        fl.ShowAllCommands();
        //fl.createDirectory(file);
 
         //fl.showFileContent(file);
