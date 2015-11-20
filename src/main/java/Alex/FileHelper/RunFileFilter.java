@@ -10,13 +10,19 @@ public class RunFileFilter {
 
     public static void main (String[] args) throws FileNotFoundException {
 
+        String content = "RFRFRFRFR rfrFRFRFRF HYHYHYH";
+
+        String path = "/home/alex/test/sample2.txt";
+
         FileHelper fl = new FileHelper();
-        File file = new File("/home/alex/test/sample.txt");
+        File file = new File("/home/alex/test/sample2.txt");
 
         //fl.ShowAllCommands();
        //fl.createDirectory(file);
 
-        fl.showFileContent(file);
+        //fl.pushContentToFile(path,content);
+
+       fl.showFileContent(file);
 
 
 

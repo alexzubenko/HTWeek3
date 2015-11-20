@@ -18,6 +18,7 @@ java.io.*;
     ?  - find file(dir)                     find
     +  - show directoryContent              dir
     +  - show file (content)                type
+    !!!! need to use the save method before use the load
     +  - delete file or dir                 del , rd
     +  - create dir                         mkdir
     +  - create file                        ? )))

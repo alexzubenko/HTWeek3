@@ -16,6 +16,8 @@ public class FileHelper {
 
     //static String startPath = new File("").getAbsolutePath();
 
+
+
     private File startPath = new File("/home/alex/java/HTWeek3");
     private Utils utils;
 
@@ -90,6 +92,14 @@ public class FileHelper {
     }*/
 
 
+// to-do need to use the save method before use the load one
+
+
+    public void pushContentToFile(String path,String content){
+        utils.save(path,content);
+
+
+    }
 
     public void showFileContent(File file){
         String output = (String)utils.load(file.getPath());
