@@ -14,13 +14,13 @@ public class View {
 
     public View (){
         scanner = new Scanner(System.in);
-        start();
         fileHelper = new FileHelper();
+        start();
     }
 
     public void start() {
         while(true) {
-            System.out.println("enter the command");
+            System.out.println(fileHelper.getRoot());
             Pair pair = getInput();
             choice = pair.getCommand();
             File file = pair.getFileName();
@@ -31,8 +31,19 @@ public class View {
 
     private Pair getInput()  {
         String line = scanner.nextLine();
-        String command = line.substring(0,line.indexOf(" "));
-        String FileName = line.substring(line.indexOf(" "),line.length());
+        String command = "";
+        String FileName = "";
+        boolean space =false ;
+        char[]array = line.toCharArray();
+        for(int i = 0; i<array.length;i++){
+            if(array[i]!= ' '&& space==false){
+                command = command+array[i];
+            }
+            else {
+                space= true;
+                FileName = FileName+array[i];
+            }
+        }
         File file  = new File(FileName);
         Pair pair = new Pair(command,file);
       return pair;

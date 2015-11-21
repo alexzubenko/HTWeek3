@@ -10,29 +10,37 @@ import java.util.Map;
  * Created by Family on 11/16/2015.
  */
 public class FileHelper {
-
-  private File root = new File("C:/");
-   private Map allCommands;
+    private File root = new File("C:\\Users\\Family");
+    private Map allCommands;
     private Utils utils;
+
+    public File getRoot() {
+        return root;
+    }
+
+    public void setRoot(File root) {
+        this.root = root;
+    }
+;
 
     public FileHelper() {
         utils = new Utils();
+        allCommands = new HashMap<String,String>();
         loadMap();
     }
 
     private void loadMap(){
-        allCommands = new HashMap<String,String>();
-        allCommands.put("help","show all available commands");
-        allCommands.put("cd","change the directory");
-        allCommands.put("find","find file or directory");
-        allCommands.put("dir","show directory content");
-        allCommands.put("type","show file content");
-        allCommands.put("del","delete file");
-        allCommands.put("mkdir","create directory");
-        allCommands.put("mkfile","create file");
-        allCommands.put("tree","show folder structure");
-        allCommands.put("copy","copy file");
-        allCommands.put("fc","compare content of two files");
+        allCommands.put("help","show all available commands \n");
+        allCommands.put("cd","change the directory \n");
+        allCommands.put("find","find file or directory \n");
+        allCommands.put("dir","show directory content \n");
+        allCommands.put("type","show file content \n");
+        allCommands.put("del","delete file \n");
+        allCommands.put("mkdir","create directory \n");
+        allCommands.put("mkfile","create file \n");
+        allCommands.put("tree","show folder structure \n");
+        allCommands.put("copy","copy file \n");
+        allCommands.put("fc","compare content of two files \n");
 
     }
 
@@ -41,9 +49,15 @@ public class FileHelper {
 
     }
 
-    public File changeCurrentLocation(File newLocation ){
-        root = newLocation;
-        return root;
+    public File changeCurrentLocation(File directory ){
+       //System.out.println(root.getAbsolutePath());
+        if (directory.exists() || directory.mkdirs())
+        {
+        setRoot(directory);
+    } else {
+            System.out.println("such of directory not exists");
+        }
+        return getRoot();
     }
 
        public String findFileOrDirectory(File fileOfDir){
