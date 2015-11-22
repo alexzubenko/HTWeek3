@@ -11,6 +11,7 @@ public class View {
  private Scanner scanner;
  private String choice;
  private FileHelper fileHelper;
+ private String fileName;
 
     public View (){
         scanner = new Scanner(System.in);
@@ -32,19 +33,19 @@ public class View {
     private Pair getInput()  {
         String line = scanner.nextLine();
         String command = "";
-        String FileName = "";
+        fileName = "";
         boolean space =false ;
         char[]array = line.toCharArray();
         for(int i = 0; i<array.length;i++){
-            if(array[i]!= ' '&& space==false){
+            if(array[i]!=' '&& !space){
                 command = command+array[i];
             }
-            else {
+            else{
                 space= true;
-                FileName = FileName+array[i];
+                fileName=fileName+array[i];
             }
         }
-        File file  = new File(FileName);
+        File file  = new File(fileHelper.getRoot().getAbsolutePath()+"\\"+fileName.substring(0));
         Pair pair = new Pair(command,file);
       return pair;
     }
@@ -53,12 +54,12 @@ public class View {
         switch (choice){
             case "help": fileHelper.showAllCommands(); break;
             case "cd":   fileHelper.changeCurrentLocation(file); break;
-            case "find": fileHelper.findFileOrDirectory(file); break;
-            case "dir":  fileHelper.createDir(file);
-            case "type": fileHelper.showFileContent(file);
-            case "del":
-            case "mkdir":
-            case "mkfile":
+            case "find": System.out.println(fileHelper.findFileOrDirectory(fileName.substring(0))); break;//
+            case "dir":  fileHelper.showDirectoryContent(file);break;
+            case "type": fileHelper.showFileContent(file);break;//
+            case "del":  fileHelper.deleteFileOrDir(file);break;//
+            case "mkdir":fileHelper.createDir(file);break;
+            case "mkfile":fileHelper.createFile(file);break;
             case "tree":
             case "copy":
             case "fc":

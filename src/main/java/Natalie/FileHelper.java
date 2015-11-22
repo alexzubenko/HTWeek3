@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by Family on 11/16/2015.
  */
 public class FileHelper {
-    private File root = new File("C:\\Users\\Family");
+    private File root = new File("C:\\Users\\Family\\Test");
     private Map allCommands;
     private Utils utils;
 
@@ -21,7 +21,7 @@ public class FileHelper {
     public void setRoot(File root) {
         this.root = root;
     }
-;
+
 
     public FileHelper() {
         utils = new Utils();
@@ -50,8 +50,7 @@ public class FileHelper {
     }
 
     public File changeCurrentLocation(File directory ){
-       //System.out.println(root.getAbsolutePath());
-        if (directory.exists() || directory.mkdirs())
+        if (directory.exists())
         {
         setRoot(directory);
     } else {
@@ -60,19 +59,23 @@ public class FileHelper {
         return getRoot();
     }
 
-       public String findFileOrDirectory(File fileOfDir){
+       public String findFileOrDirectory(String fileOfDir){
            File[] matchingFiles = root.listFiles(new FilenameFilter() {
                public boolean accept(File dir, String name) {
-                   return name.startsWith(fileOfDir.toString());
+                   return name.startsWith(fileOfDir);
                }
            });
-              return null;
+ return null;
        }
 
 
 
     public void showDirectoryContent(File directory){
-        System.out.println(directory.list());
+        File[] files = directory.listFiles();
+        for (File f :files){
+            System.out.println(f.getName());
+        }
+
      }
 
     public void showFileContent(File file){
@@ -86,12 +89,13 @@ public class FileHelper {
  }
 
     public boolean createDir(File dirToCreate){
-       return dirToCreate.mkdir();
 
+        return dirToCreate.mkdir();
     }
 
     public boolean createFile(File fileToCreate){
         try {
+
             return fileToCreate.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
