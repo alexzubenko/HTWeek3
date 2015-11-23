@@ -11,46 +11,54 @@ public class View {
  private Scanner scanner;
  private String choice;
  private FileHelper fileHelper;
+ private String [] inputList;
+ private File file;
+ private String simpleFileName;
 
     public View (){
         scanner = new Scanner(System.in);
-        start();
         fileHelper = new FileHelper();
+        start();
+    }
+    private String[] getUserInput(){
+        String line = scanner.nextLine();
+        inputList = new String[10];
+        if (line.contains(" ")){
+            inputList = line.split(" ");
+        }
+        else { inputList[0] = line;}
+        return inputList;
     }
 
     public void start() {
         while(true) {
-            System.out.println("enter the command");
-            Pair pair = getInput();
-            choice = pair.getCommand();
-            File file = pair.getFileName();
-            doChoice(choice,file);
-        }
+            System.out.println(fileHelper.getRoot()+">");
+            inputList = getUserInput();
+            choice = inputList[0];
+            if(inputList[1]!=null) {
+                file = new File(fileHelper.getRoot().getAbsolutePath() + "\\" + inputList[1]);
+                simpleFileName = inputList[1];
+            }
+            doChoice(file, simpleFileName, choice);
+    }}
 
-    }
 
-    private Pair getInput()  {
-        String line = scanner.nextLine();
-        String command = line.substring(0,line.indexOf(" "));
-        String FileName = line.substring(line.indexOf(" "),line.length());
-        File file  = new File(FileName);
-        Pair pair = new Pair(command,file);
-      return pair;
-    }
 
-    private void doChoice(String choice,File file){
+
+    private void doChoice(File file, String simpleFileName, String choice){
         switch (choice){
             case "help": fileHelper.showAllCommands(); break;
             case "cd":   fileHelper.changeCurrentLocation(file); break;
-            case "find": fileHelper.findFileOrDirectory(file); break;
-            case "dir":  fileHelper.createDir(file);
-            case "type": fileHelper.showFileContent(file);
-            case "del":
-            case "mkdir":
-            case "mkfile":
-            case "tree":
-            case "copy":
+            case "find":// System.out.println(fileHelper.findFileOrDirectory(simpleFileName)); break;
+            case "dir":  fileHelper.showDirectoryContent(file);break;
+            case "type": fileHelper.showFileContent(file);break;
+            case "del":  fileHelper.deleteFileOrDir(file);break;// why do not delete folders with files inside??
+            case "mkdir": fileHelper.createDir(file);break;
+            case "mkfile":fileHelper.createFile(file);break;
+            case "tree": fileHelper.showFolderTree(file);break;
+            case "copy":fileHelper.copyFile(file);break;
             case "fc":
+            case "cd..":fileHelper.getToThePreviousFolder(); break;
             case "exit": System.exit(-1);break;
             default: System.out.println("such of command not exists");
 

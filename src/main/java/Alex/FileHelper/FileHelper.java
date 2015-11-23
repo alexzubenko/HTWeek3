@@ -18,9 +18,12 @@ public class FileHelper {
 
 
 
-    private File startPath = new File("/home/alex/java/HTWeek3");
+    private File startPath = new File("/home/alex");
     private Utils utils;
 
+    public void setStartPath(File startPath) {
+        this.startPath = startPath;
+    }
 
     private Map<String,String> helpMap;
 
@@ -52,11 +55,27 @@ public class FileHelper {
 
     }
 
-    public void changeCurrentLocation (File newPath){
+    public File changeCurrentLocation(File directory ){
+        if (directory.exists())
+        {
+            setStartPath(directory);
+        } else {
+            System.out.println("such of directory not exists");
+        }
+        return getStartPath();
+    }
 
-        startPath = newPath;
+    public String findFileOrDirectory(String fileOfDir){
+        File[] matchingFiles = startPath.listFiles(new FilenameFilter() {
+            public boolean accept(File dir, String name) {
+                return name.startsWith(fileOfDir);
+            }
+        });
+        return null;
+    }
 
-
+    public File backToThePreviousFolder(){
+        return startPath = (new File(startPath.getParent()));
     }
 
     public void ShowAllCommands (){
@@ -128,25 +147,31 @@ public class FileHelper {
     }
 
 
+    public void showFolderTree( File path ){
 
-
-
-    public void showFolderTree( File path ) {
-
-
-        File[] list = path.listFiles();
-
-        if (list == null) return;
-
-        for (File f : list) {
-            if (f.isDirectory()) {
-                showFolderTree(new File(f.getAbsolutePath()));
-                System.out.println("Dir:" + f.getAbsoluteFile());
-            } else {
-                System.out.println("File:" + f.getAbsoluteFile());
-            }
+        if (path == null){
+            System.out.println("please specify the folde name as parameter");
         }
+        else {
+
+            File[] list = path.listFiles();
+
+
+            if (list == null) return;
+
+            for (File f : list) {
+                if (f.isDirectory()) {
+                    showFolderTree(new File(f.getAbsolutePath()));
+                    System.out.println("Dir:" + f.getAbsoluteFile());
+                } else {
+                    System.out.println("File:" + f.getAbsoluteFile());
+                }
+            }
+
+        }
+
     }
+
 
 
     /*public void findFile(File filename){
