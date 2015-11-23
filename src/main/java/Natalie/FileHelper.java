@@ -78,9 +78,10 @@ public class FileHelper {
         }}
      }
 
-    public void showFileContent(File file){
-      String output = utils.FileReader(file.getPath()+".txt");
+    public String showFileContent(File file){
+      String output = utils.fileReader(file.getPath()+".txt");
         System.out.println(output);
+        return output;
     }
 
  public void deleteFileOrDir(File fileToDelete){
@@ -94,7 +95,6 @@ public class FileHelper {
 
     public boolean createFile(File fileToCreate){
         try {
-
             return fileToCreate.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
@@ -116,7 +116,10 @@ public class FileHelper {
           return root = (new File(root.getParent()));
     }
     public File copyFile(File fileToCopy){
-
+        String fileContent = showFileContent(fileToCopy);
+        File fileCopy = new File (fileToCopy.getPath()+"_copy");
+        createFile(fileCopy) ;
+        utils.fileWriter(fileCopy,fileContent);
         return null;
     }
 

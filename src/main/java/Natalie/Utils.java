@@ -17,7 +17,7 @@ public class Utils <V> implements Serializable{
         }
     }
 
-    public String FileReader (String path){
+    public String fileReader (String path){
         String fileContent ="";
         BufferedReader br = null;
         try {
@@ -44,6 +44,17 @@ public class Utils <V> implements Serializable{
         return fileContent ;
     }
 
+
+    public void fileWriter(File file, String content){
+        PrintWriter writer = null;
+        try {
+            writer = new PrintWriter(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        writer.println(content);
+        writer.close();
+    }
 
     public V load(String path) {
 

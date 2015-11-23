@@ -56,7 +56,7 @@ public class View {
             case "mkdir": fileHelper.createDir(file);break;
             case "mkfile":fileHelper.createFile(file);break;
             case "tree": fileHelper.showFolderTree(file);break;
-            case "copy":
+            case "copy":fileHelper.copyFile(file);break;
             case "fc":
             case "cd..":fileHelper.getToThePreviousFolder(); break;
             case "exit": System.exit(-1);break;
