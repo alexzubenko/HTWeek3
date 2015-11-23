@@ -17,6 +17,33 @@ public class Utils <V> implements Serializable{
         }
     }
 
+    public String FileReader (String path){
+        String fileContent ="";
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(path));
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+            while (line != null) {
+                sb.append(line);
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+            }
+             fileContent = sb.toString();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+             br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return fileContent ;
+    }
+
 
     public V load(String path) {
 

@@ -48,7 +48,6 @@ public class FileHelper {
         System.out.println(allCommands);
 
     }
-
     public File changeCurrentLocation(File directory ){
         if (directory.exists())
         {
@@ -65,23 +64,23 @@ public class FileHelper {
                    return name.startsWith(fileOfDir);
                }
            });
- return null;
+        return null;
        }
 
-
-
     public void showDirectoryContent(File directory){
+        if(directory == null){
+            System.out.println("No such file found");
+        }
+        else{
         File[] files = directory.listFiles();
         for (File f :files){
             System.out.println(f.getName());
-        }
-
+        }}
      }
 
     public void showFileContent(File file){
-      String output = (String )utils.load(file.getPath());
+      String output = utils.FileReader(file.getPath()+".txt");
         System.out.println(output);
-
     }
 
  public void deleteFileOrDir(File fileToDelete){
@@ -104,15 +103,17 @@ public class FileHelper {
     }
 
     public void showFolderTree(File folder){
-
         for (final File f : folder.listFiles()) {
             if (f.isDirectory()) {
+                System.out.println(f.getName());
                 showFolderTree(f);
             } else {
                 System.out.println(f.getName());
             }
         }
-
+    }
+    public File getToThePreviousFolder(){
+          return root = (new File(root.getParent()));
     }
     public File copyFile(File fileToCopy){
 
