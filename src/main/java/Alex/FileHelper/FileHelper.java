@@ -18,7 +18,7 @@ public class FileHelper {
 
 
 
-    private File startPath = new File("/home/alex");
+    private File startPath = new File("/home/alex/test");
     private Utils utils;
 
     public void setStartPath(File startPath) {
@@ -42,15 +42,17 @@ public class FileHelper {
         helpMap = new HashMap<String, String>();
         helpMap.put("help","show all available commands");
         helpMap.put("cd","changeCurrentLocation");
+        helpMap.put("cd..","backToParentFolder");
         helpMap.put("find","find file(dir)s");
-        helpMap.put("dir","show directoryContent");
+        helpMap.put("ls","show directoryContent");
         helpMap.put("type","show file (Content)");
-        helpMap.put("delete","delete file or dir");
+        helpMap.put("del","delete file or dir");
         helpMap.put("mkdir","create directory");
-        helpMap.put("create","create file");
+        helpMap.put("cat","create file");
         helpMap.put("tree","show folder structure");
         helpMap.put("copy","copy file");
         helpMap.put("fc","compare content of files");
+        helpMap.put("quit","Exit the java commandline");
 
 
     }
@@ -74,11 +76,10 @@ public class FileHelper {
         return null;
     }
 
-    public File backToThePreviousFolder(){
-        return startPath = (new File(startPath.getParent()));
-    }
+    public File backToThePreviousFolder(){return startPath = (new File(startPath.getParent()));}
 
-    public void ShowAllCommands (){
+
+    public void ShowAllCommands(){
 
         for (Map.Entry entry : helpMap.entrySet()) {
             System.out.println(entry.getKey() + " - "+ entry.getValue());
@@ -89,9 +90,9 @@ public class FileHelper {
 
 
 
-    public void createDirectory(File directoryName){
-        directoryName.mkdir();
-        System.out.println("Directory " + startPath + "/"+ directoryName.getName() + " has been created");
+    public boolean createDirectory(File directoryName){
+       System.out.println("Directory " + startPath + "/"+ directoryName.getName() + " has been created");
+        return directoryName.mkdir();
     }
 
 
@@ -115,30 +116,48 @@ public class FileHelper {
 
 
     public void pushContentToFile(String path,String content){
-        utils.save(path,content);
+        utils.save(path, content);
 
 
     }
 
-    public void showFileContent(File file){
+    /*public void showFileContent(File file){
         String output = (String)utils.load(file.getPath());
         System.out.println(output);
 
+    }*/
+
+
+    public String showFileContent(File file){
+        String output = utils.fileReader(file.getPath());//+".txt");
+        System.out.println(output);
+        return output;
     }
 
 
     public void showDirectoryContent(File directory){
+        if (directory==null) {
+            File[] list = startPath.listFiles();
+            for (File file : list) {
+                System.out.println(file);
+            }
+        }
+        else{
         File [] list = directory.listFiles();
         for (File file:list){
-        System.out.println(file);}
+        System.out.println(file);}}
     }
 
-    public void createFile(File filename){
+
+
+
+    public boolean createFile(File filename){
         try {
-            filename.createNewFile();
+            return filename.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
 
@@ -150,7 +169,20 @@ public class FileHelper {
     public void showFolderTree( File path ){
 
         if (path == null){
-            System.out.println("please specify the folde name as parameter");
+            File[] list = startPath.listFiles();
+
+
+            if (list == null) return;
+
+            for (File f : list) {
+                if (f.isDirectory()) {
+                    showFolderTree(new File(f.getAbsolutePath()));
+                    System.out.println("Dir:" + f.getAbsoluteFile());
+                } else {
+                    System.out.println("File:" + f.getAbsoluteFile());
+                }
+            }
+
         }
         else {
 
@@ -206,9 +238,12 @@ public class FileHelper {
     }
 
 
-    //To-do
-    public void copyFile(File fileName){
-
+    public File copyFile(File fileToCopy){
+        String fileContent = showFileContent(fileToCopy);
+        File fileCopy = new File (fileToCopy.getPath()+"_copy");
+        createFile(fileCopy) ;
+        utils.fileWriter(fileCopy,fileContent);
+        return null;
     }
 
 

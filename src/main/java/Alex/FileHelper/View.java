@@ -57,16 +57,16 @@ public class View {
             case "help": fileHelper.ShowAllCommands(); break;
             case "cd":   fileHelper.changeCurrentLocation(file); break;
             case "find":// System.out.println(fileHelper.findFileOrDirectory(simpleFileName)); break;
-            case "dir":  fileHelper.showDirectoryContent(file);break;
+            case "ls":  fileHelper.showDirectoryContent(file);break;
             case "type": fileHelper.showFileContent(file);break;
             case "del":  fileHelper.deleteFileDir(file);break;// why do not delete folders with files inside??
             case "mkdir": fileHelper.createDirectory(file);break;
-            case "mkfile":fileHelper.createFile(file);break;
+            case "cat":fileHelper.createFile(file);break;
             case "tree": fileHelper.showFolderTree(file);break;
             case "copy":fileHelper.copyFile(file);break;
             case "fc":
             case "cd..":fileHelper.backToThePreviousFolder(); break;
-            case "exit": System.exit(-1);break;
+            case "quit": System.exit(-1);break;
             default: System.out.println("such of command not exists");
 
         }
