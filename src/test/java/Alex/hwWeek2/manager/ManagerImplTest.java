@@ -90,11 +90,11 @@ public class ManagerImplTest {
 
     @Test //todo wi mock
     public void testAddSubject() throws Exception, NullSubjectException {
-        Subject subject1 = null;
-        Subject subj = new Subject(0,null,0);
+
+
 
             //subject1= manager.addSubject(mockStudent, mockSubject);
-        subject1 = manager.addSubject(student,subj);
+        Subject subject1 = manager.addSubject(student,subject);
 
         assertEquals(Subject.class, subject1.getClass());
 
