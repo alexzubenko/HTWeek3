@@ -7,12 +7,13 @@ import Alex.hwWeek2.exceptions.NullSubjectException;
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 
-/**
- * Created by alex on 01.12.15.
- */
+@RunWith(MockitoJUnitRunner.class)
 public class ManagerImplTest {
 
     private static final Logger LOGGER = Logger.getLogger(ManagerImplTest.class);
@@ -21,6 +22,9 @@ public class ManagerImplTest {
     Subject subject;
     Manager manager;
 
+    Student mockStudent;
+    Subject mockSubject;
+    Manager mockManager;
 
     @Before
     public void initEnteties() {
@@ -29,6 +33,10 @@ public class ManagerImplTest {
         subject = new Subject(1, "Test", 34);
         student.getListOfSubjects().put(subject.getId(), subject);
         manager = new ManagerImpl();
+        mockStudent = mock(Student.class);
+        //todo init mock wia when
+        mockSubject = mock(Subject.class);
+        mockManager = mock(ManagerImpl.class);
     }
 
     @Test
@@ -72,6 +80,7 @@ public class ManagerImplTest {
     @Test
     public void testShowStudentMarkBySubject() throws Exception {
 
+
     }
 
     @Test
@@ -79,8 +88,15 @@ public class ManagerImplTest {
 
     }
 
-    @Test
-    public void testAddSubject() throws Exception {
+    @Test //todo wi mock
+    public void testAddSubject() throws Exception, NullSubjectException {
+        Subject subject1 = null;
+        Subject subj = new Subject(0,null,0);
+
+            //subject1= manager.addSubject(mockStudent, mockSubject);
+        subject1 = manager.addSubject(student,subj);
+
+        assertEquals(Subject.class, subject1.getClass());
 
     }
 
