@@ -18,13 +18,13 @@ public class ManagerImplTest {
 
     private static final Logger LOGGER = Logger.getLogger(ManagerImplTest.class);
 
-    Student student;
-    Subject subject;
-    Manager manager;
+    private Student student;
+    private Subject subject;
+    private Manager manager;
 
-    Student mockStudent;
-    Subject mockSubject;
-    Manager mockManager;
+    private Student mockStudent;
+    private Subject mockSubject;
+    private Manager mockManager;
 
     @Before
     public void initEnteties() {

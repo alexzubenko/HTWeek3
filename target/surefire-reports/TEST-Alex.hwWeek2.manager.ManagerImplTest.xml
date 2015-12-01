@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="22" failures="0" name="Alex.hwWeek2.manager.ManagerImplTest" time="0.606" errors="0" skipped="0">
+<testsuite tests="22" failures="0" name="Alex.hwWeek2.manager.ManagerImplTest" time="0.409" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64"/>
@@ -59,7 +59,7 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testAverageMark1" time="0.248"/>
+  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testAverageMark1" time="0.17"/>
   <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testDelSubject" time="0"/>
   <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testSubjecttExists1" time="0"/>
   <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testBeginStuding" time="0"/>
@@ -69,16 +69,16 @@
   <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testPassExam1" time="0"/>
   <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testSubjecttExists" time="0"/>
   <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testShowAllSubjects" time="0"/>
-  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testBeginStuding1" time="0.002"/>
-  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testShowStudentMarkBySubject1" time="0.004"/>
-  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testStudentExists" time="0.001"/>
-  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testAddSubject1" time="0.002"/>
-  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testShowInfoBySubject" time="0.002"/>
-  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testStudentExists1" time="0.001"/>
-  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testShowInfoBySubject1" time="0.002"/>
-  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testAverageMark" time="0.005"/>
-  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testShowStudentMarkBySubject" time="0.001"/>
-  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testShowInfoBySubjectNegative" time="0.001"/>
+  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testBeginStuding1" time="0"/>
+  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testShowStudentMarkBySubject1" time="0"/>
+  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testStudentExists" time="0"/>
+  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testAddSubject1" time="0"/>
+  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testShowInfoBySubject" time="0"/>
+  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testStudentExists1" time="0"/>
+  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testShowInfoBySubject1" time="0"/>
+  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testAverageMark" time="0"/>
+  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testShowStudentMarkBySubject" time="0"/>
+  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testShowInfoBySubjectNegative" time="0"/>
   <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testPassExam" time="0"/>
-  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testDelSubject1" time="0.001"/>
+  <testcase classname="Alex.hwWeek2.manager.ManagerImplTest" name="testDelSubject1" time="0"/>
 </testsuite>
