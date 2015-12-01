@@ -19,7 +19,7 @@ public interface Manager {
     public Subject addSubject (Student student, Subject subject) throws NullStudentException, NullSubjectException;
     public boolean delSubject(Student student, Subject subject) throws NullStudentException, NullSubjectException;
     public Map<Integer, Subject> showAllSubjects(Student student) throws NullStudentException;
-    public Student averageMark (Student student);
+    public int averageMark (Student student) throws NullStudentException;
     public boolean subjecttExists(Student student,Subject subject) throws NullStudentException, NullSubjectException;
     public boolean studentExists(Student student) throws NullStudentException;
 
