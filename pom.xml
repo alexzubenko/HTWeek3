@@ -8,5 +8,59 @@
     <artifactId>HTWeek3</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <mockito-all.version>1.10.19</mockito-all.version>
+        <junit.version>4.12</junit.version>
+        <jsoup.version>1.8.3</jsoup.version>
+        <log4j.version>1.2.17</log4j.version>
+        <org.eclipse.persistence.moxy.version>2.6.1</org.eclipse.persistence.moxy.version>
+        <maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
+        <compilator.java.version>1.8</compilator.java.version>
+        <morphia.version>1.0.1</morphia.version>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>${mockito-all.version}</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${compilator.java.version}</source>
+                    <target>${compilator.java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
     
 </project>
